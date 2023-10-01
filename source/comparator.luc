@@ -1,0 +1,22 @@
+module comparator (
+    input zvn[3], //from adder
+    input alufn_signal[6],  
+    output out
+  ) {
+ 
+  sig z,v,n; 
+  
+  always {
+    z = zvn[2];
+    v = zvn[1];
+    n = zvn[0];
+    
+    out = 16b0;
+    case(alufn_signal){
+      b110011: out[0] = z; //a == b
+      b110101: out[0] =  n ^ v; //a < b
+      b110111: out[0] = z | (n ^ v); //a <= b
+      default: out[0] = 0;
+    
+  }
+}

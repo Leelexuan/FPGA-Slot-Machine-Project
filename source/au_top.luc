@@ -1,0 +1,141 @@
+module au_top (
+    input clk,              // 100MHz clock
+    input rst_n,            // reset button (active low)
+    output led [8],         // 8 user controllable LEDs
+    input usb_rx,           // USB->Serial input
+    output usb_tx,          // USB->Serial output
+    output io_led [3][8],   // LEDs on IO Shield
+    output io_seg [8],      // 7-segment LEDs on IO Shield
+    output io_sel [4],      // Digit select on IO Shield
+    input io_button [5],    // 5 buttons on IO Shield
+    input io_dip [3][8],     // DIP switches on IO Shield
+    
+    //external output
+    output dataout[4],
+    output stcp[1],
+    output shcp[1],
+    output timer[1],
+    output score_1[1],
+    output score_2[1],
+    
+    //external input
+    input smash_button[1],
+    input mode[1],
+    input coin[1],
+    input lever[1]
+    
+  ) {
+  
+  //signals
+  sig rst;
+  
+  //imported modules
+  output_hex_converter hex_converter;
+  
+  
+  .clk(clk){
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    reset_conditioner reset_cond;
+    //resets when io_button[1] is pressed
+    .rst(io_button[0]){
+      multi_seven_seg seg;
+      datapath datapath;
+    }
+    
+    /*
+    edge_detector edge_dt_button1 (#RISE(1), #FALL(0));
+    edge_detector edge_dt_button2(#RISE(1), #FALL(0));
+    edge_detector edge_dt_button3(#RISE(1), #FALL(0));
+    edge_detector edge_dt_button4(#RISE(1), #FALL(0));
+
+    button_conditioner button_cond_1;
+    button_conditioner button_cond_2;
+    button_conditioner button_cond_3;
+    button_conditioner button_cond_4; */
+    
+    //
+    edge_detector edge_dt_button1 (#RISE(1), #FALL(0));
+    edge_detector edge_dt_button2(#RISE(1), #FALL(0));
+    edge_detector edge_dt_button3(#RISE(1), #FALL(0));
+
+    button_conditioner button_cond_1;
+    button_conditioner button_cond_2;
+    button_conditioner button_cond_3;
+
+    
+  }
+  
+  
+  always {
+    reset_cond.in = ~rst_n; // input raw inverted reset signal
+    rst = reset_cond.out;   // conditioned reset
+    
+    usb_tx = usb_rx;        // loop serial port
+    
+    led = 8h00;             // turn LEDs off
+    
+    //values to show on seven_segment
+    hex_converter.data = datapath.score_debug;
+    seg.values = hex_converter.out_hex;
+   
+    
+    io_led = 3x{{8h00}};    // turn LEDs off
+    io_seg = ~seg.seg;          // turn segments off
+    io_sel = ~seg.sel;           // select no digits
+    
+    /*
+    //fpga
+    //button conditioners
+    button_cond_1.in = io_button[0];
+    button_cond_2.in = io_button[2];
+    button_cond_3.in = io_button[3];
+    button_cond_4.in = io_button[4];
+    
+    edge_dt_button1.in = button_cond_1.out;
+    edge_dt_button2.in = button_cond_2.out;
+    edge_dt_button3.in = button_cond_3.out;
+    edge_dt_button4.in = button_cond_4.out; */
+    
+    //switch for mode 
+    datapath.io_dip_0 = mode[0]; //B49
+    
+    
+    //to fpga led
+    io_led[0][datapath.pixel] = datapath.led_a_light;
+    io_led[1][datapath.pixel] = datapath.led_b_light;
+    io_led[2][datapath.pixel] = datapath.led_c_light; 
+    
+    
+    
+    //external output
+    
+    dataout[0] = datapath.led_a_light; //A30
+    dataout[1] = datapath.led_b_light; //A31
+    dataout[2] = datapath.led_c_light; //A34
+    
+    stcp[0] = datapath.stcp; //A33
+    shcp[0] = datapath.shcp; //A36 
+    
+    timer[0] = datapath.timer; //A37
+    
+    score_1[0] = datapath.score_1; //A39
+    score_2[0] = datapath.score_2; //A40
+    
+    
+    //external inputs 
+    button_cond_1.in = smash_button; //B48
+    button_cond_2.in = coin; //B43
+    button_cond_3.in = lever; //B42
+    
+    edge_dt_button1.in = button_cond_1.out;
+    edge_dt_button2.in = button_cond_2.out;
+    edge_dt_button3.in = button_cond_3.out;
+    
+    //button for start and stop roll
+    datapath.io_button_0 = edge_dt_button1.out; //smash button
+    datapath.io_button_1 = edge_dt_button2.out; //coin
+    datapath.io_button_2 = edge_dt_button3.out; //lever
+   
+  }
+}

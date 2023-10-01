@@ -1,0 +1,24 @@
+module adder (
+    input a[16],
+    input b[16],
+    input alufn_signal[6],
+    output out[16],
+    output zvn[3]
+    ){
+ 
+  sig sum[16];
+ 
+  always {
+    sum = 16b0;
+    
+    case(alufn_signal[0]){
+      0: sum = a + b;
+      1: sum = a - b;
+      default: sum = 16b0;
+  }
+    
+    zvn[0] = sum[15];
+    zvn[1] = (((alufn_signal[0] ^ b[15]) & a[15]) & !sum[15]) || ((!(alufn_signal[0] ^ b[15]) & !a[15]) & sum[15]);
+    zvn[2] = ~|sum;
+    out = sum; 
+}

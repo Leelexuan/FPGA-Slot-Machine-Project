@@ -1,0 +1,13 @@
+module output_hex_converter (
+    input data[16],
+    output out_hex[4][4]
+  ) {
+
+  //to convert data from binary to hex to display on seven segment
+  always {
+    out_hex[0] = data[3:0];
+    out_hex[1] = data[7:4];
+    out_hex[2] = data[11:8];
+    out_hex[3] = data[15:12];
+  }
+}

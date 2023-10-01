@@ -1,0 +1,160 @@
+module registers (
+    input clk,  // clock
+    input rst,  // reset
+    input we[1], //write enable
+    input data[16], //data in 
+    input io_button_0,
+    input io_button_2,
+    
+    input out_a[16], //from final_outputs to show final symbol
+    input out_b[16],
+    input out_c[16],
+    
+    input score_display_1[4], //from score_calculation
+    input score_display_2[4],
+    
+    
+    input ra_address[5], //port a
+    input rb_address[5], //port b 
+    input rc_address[5], //port c  - address to write to 
+    output ra_data[16], //read port a - input of ALU
+    output rb_data[16], //read port b - input of ALU
+    
+    output led_a_rom[16], //address of ROM that points to what we want to display in LED A
+    output led_b_rom[16],
+    output led_c_rom[16],
+    
+    output timer[4],
+    
+    
+    output scoreboard_1[4], //to led_looper
+    output scoreboard_2[4]
+  ) {
+  
+  
+  .clk(clk){
+    .rst(rst){
+      dff led_a[16];
+      dff led_b [16];
+      dff led_c [16];
+      dff led_start_a[16];
+      dff led_start_b[16];
+      dff led_start_c[16];
+      dff reset_buffer_dff[16];
+      dff counter_roll[16];
+      dff led_stop_b[16];
+      dff led_stop_c[16];
+      dff stop_counter[16];
+      dff timer_counter_dff[4];
+      dff final_a[16];
+      dff final_b[16];
+      dff final_c[16];
+      dff timer_display[4];
+      dff score_1_store[16];
+      dff score_2_store[16];
+      dff score_1[4];
+      dff score_2[4];
+    }
+    .rst(rst){
+      counter stopping_counter(#SIZE(6),#DIV(21),#TOP(32));}
+    .rst(io_button_0){
+      counter rolling_counter(#SIZE(6),#DIV(21),#TOP(32));
+      counter reset_buffer(#SIZE(6),#DIV(26),#TOP(32));}
+    .rst(io_button_2){
+      counter timer_counter(#SIZE(4),#DIV(26),#TOP(9), #UP(0));}}
+
+    
+  always {
+  
+    //regfile to rom outputs
+    led_a_rom = led_a.q; //also to score_calculation
+    led_b_rom = led_b.q;
+    led_c_rom = led_c.q;
+    
+    timer = timer_display.q;
+    
+    scoreboard_1 = score_1.q;
+    scoreboard_2 = score_2.q;
+    
+    score_1_store.d = score_display_1;
+    score_2_store.d = score_display_2;
+    
+    
+    //function 
+    reset_buffer_dff.d = reset_buffer.value;
+    counter_roll.d = rolling_counter.value;
+    stop_counter.d = stopping_counter.value;
+    timer_counter_dff.d = timer_counter.value;
+    
+    //final output displays dffs
+    final_a.d = out_a;
+    final_b.d = out_b;
+    final_c.d = out_c; 
+    
+
+    if (we){ //if write enable signal is turned on, write input data into the specified address in rc_address
+    case (rc_address){
+        h0: led_a.d = data; //.d is the "input" port of the dff
+        h4: led_b.d = data;
+        h7: led_c.d = data;
+        h9: led_start_a.d = data;
+        hA: led_start_b.d = data;
+        hB: led_start_c.d = data;
+        hE: led_stop_b.d = data;
+        hF: led_stop_c.d = data;
+        h15: timer_display.d = data;
+        h18: score_1.d = data;
+        h19: score_2.d = data;
+        
+      }}
+     
+    //read port a 
+    case(ra_address){ //can only be read from, not written to
+        h0: ra_data = led_a.q; //.q is the "output" port of the dff
+        h4: ra_data = led_b.q; 
+        h7: ra_data = led_c.q;
+        h9: ra_data = led_start_a.q;
+        hA: ra_data = led_start_b.q;
+        hB: ra_data = led_start_c.q;
+        hC: ra_data = reset_buffer_dff.q;
+        hD: ra_data = counter_roll.q;
+        hE: ra_data = led_stop_b.q;
+        hF: ra_data = led_stop_c.q;
+        h10: ra_data = stop_counter.q;
+        h11: ra_data = timer_counter_dff.q;
+        h12: ra_data = final_a.q;
+        h13: ra_data = final_b.q;
+        h14: ra_data = final_c.q;
+        h15: ra_data = timer_display.q;
+        h16: ra_data = score_1_store.q;
+        h17: ra_data = score_2_store.q;
+
+        default: ra_data = 16b0;
+    }
+    
+    //read port b 
+    case(rb_address){
+        h0: rb_data = led_a.q;
+        h4: rb_data = led_b.q; 
+        h7: rb_data = led_c.q;
+        h9: rb_data = led_start_a.q;
+        hA: rb_data = led_start_b.q;
+        hB: rb_data = led_start_c.q;
+        hC: rb_data = reset_buffer_dff.q;
+        hD: rb_data = counter_roll.q;
+        hE: rb_data = led_stop_b.q;
+        hF: rb_data = led_stop_c.q;
+        h10: rb_data = stop_counter.q;
+        h11: rb_data = timer_counter_dff.q;
+        h12: rb_data = final_a.q;
+        h13: rb_data = final_b.q;
+        h14: rb_data = final_c.q;
+        h15: rb_data = timer_display.q;
+        h16: rb_data = score_1_store.q;
+        h17: rb_data = score_2_store.q;
+      
+        default: rb_data = 16b0;
+    }
+    
+  }
+}

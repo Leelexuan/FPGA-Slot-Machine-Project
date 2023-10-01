@@ -1,0 +1,10 @@
+module floor_division (
+    input a[16],
+    input b[16],
+    output out[16]
+  ) {
+
+  always {
+    out = $unsigned(a)/$unsigned(b);
+  }
+}

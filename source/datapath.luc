@@ -1,0 +1,182 @@
+module datapath (
+    input clk,  // clock
+    input rst,  // reset
+    
+    input io_button_0, //main button 
+    input io_button_1, //coin 
+    input io_button_2, //lever 
+    
+    input io_dip_0, //mode
+    
+    
+    output pixel[4],
+    output led_a_light[1],
+    output led_b_light[1],
+    output led_c_light[1],
+    
+    output stcp[1],
+    output shcp[1],
+    
+    output timer[1],
+    output score_1[1],
+    output score_2[1],
+    output score_debug[8],
+    
+    output led_b_rom_address[16],
+    output debug_rand_start[16],
+    output timer_debug[4]
+    
+  ) {
+  
+  .clk(clk){
+  .rst(rst){
+    registers registers;
+    led_looper_a led_looper_a;
+    control_unit control_unit;
+    matrix_led_driver matrix_led_driver(#CHAIN(2), #SPEED(7));
+      
+    random_number_start random_number_start;}}
+      
+  rom rom;
+  alu alu;
+  final_outputs final_outputs;
+  score_calculation score_calculation;
+  
+  //for easier debugging
+  sig alu_a[16];
+  sig alu_b[16];
+  sig regfile_data[16];
+  
+  always {
+    
+    //regfile to led_looper 
+    led_looper_a.reg_a = registers.led_a_rom;
+    led_looper_a.reg_b = registers.led_b_rom;
+    led_looper_a.reg_c = registers.led_c_rom;
+    
+       
+    //led_looper to rom
+    rom.address_a = led_looper_a.led_a_rom_address;
+    rom.address_b = led_looper_a.led_b_rom_address;
+    rom.address_c = led_looper_a.led_c_rom_address;
+    
+    
+    //datapath outputs (from rom and led_looper to external leds)
+    pixel = led_looper_a.pixel;
+    
+    /*
+    //led_a_light = rom.led_light_a;
+    led_b_light = rom.led_light_b_test;
+    led_c_light = rom.led_light_c_test;*/
+    
+    //rom to matrix writer
+    matrix_led_driver.data_A = rom.led_light_a;
+    matrix_led_driver.data_B = rom.led_light_b;
+    matrix_led_driver.data_C = rom.led_light_c;
+    
+    //matrix to led input
+    led_a_light = matrix_led_driver.ds_A;
+    led_b_light = matrix_led_driver.ds_B;
+    led_c_light = matrix_led_driver.ds_C;
+    stcp = matrix_led_driver.stcp;
+    shcp = matrix_led_driver.shcp;
+    
+    //mode switch
+    control_unit.mode = io_dip_0;
+    
+    //button, lever and coin 
+    control_unit.io_button_0 = io_button_0;
+    control_unit.io_button_1 = io_button_1;
+    control_unit.io_button_2 = io_button_2;
+    
+    //control_unit signals to alu
+    control_unit.alu_out = alu.out;
+    
+    //asel mux 
+    case(control_unit.asel){
+      b00: alu_a = registers.ra_data;
+      b01: alu_a = hA; //to check if timer reached 10 seconds
+      b10: alu_a = h1; //to check for button press/mode/lever
+      b11: alu_a = h0; 
+      default: alu_a = 0;
+    }
+    
+    //bsel mux
+    case(control_unit.bsel){
+      b00: alu_b = registers.rb_data;
+      b01: alu_b = d8; //for floor_division
+      b10: alu_b = h4; //to check for button press
+      b11: alu_b = h1; //to check for button press
+      default: alu_b = 0;
+    }
+    
+    //alu
+    alu.alufn_signal = control_unit.alufn;
+    alu.a = alu_a;
+    alu.b = alu_b;
+    
+    //wdsel mux
+    case(control_unit.wdsel){
+      b00: regfile_data = alu.out;
+      b01: regfile_data = random_number_start.start_A; 
+      b10: regfile_data = random_number_start.start_B;
+      b11: regfile_data = random_number_start.start_C;
+      default: regfile_data = alu.out;
+    }
+    
+    //control_unit to regfile
+    registers.ra_address = control_unit.ra;
+    registers.rb_address = control_unit.rb;
+    registers.rc_address = control_unit.rc;
+    registers.we = control_unit.we;
+    registers.data = regfile_data;
+    
+    //regfile to final_outputs
+    final_outputs.led_a = registers.led_a_rom;
+    final_outputs.led_b = registers.led_b_rom;
+    final_outputs.led_c = registers.led_c_rom;
+    
+    //final_outputs to regfile 
+    registers.out_a = final_outputs.out_a;
+    registers.out_b = final_outputs.out_b;
+    registers.out_c = final_outputs.out_c; 
+    
+    //button to reset counters
+    registers.io_button_0 = io_button_0;
+    registers.io_button_2 = io_button_2;
+    
+    //timer
+    timer_debug = registers.timer;
+    led_looper_a.timer = registers.timer; //raw timer score (0 to 9) to looper
+    rom.timer = led_looper_a.timer_rom_address; //looper to rom
+    matrix_led_driver.timer = rom.timer_display; //from rom into led driver
+    timer = matrix_led_driver.timer_out; 
+    
+    //scoreboards
+    score_calculation.output_a = registers.led_a_rom;
+    score_calculation.output_b = registers.led_b_rom;
+    score_calculation.output_c = registers.led_c_rom;
+    
+    registers.score_display_1 = score_calculation.output_screen_1;
+    registers.score_display_2 = score_calculation.output_screen_2;
+    
+    led_looper_a.scoreboard_1 = registers.scoreboard_1;
+    led_looper_a.scoreboard_2 = registers.scoreboard_2;
+    
+    rom.scoreboard1 = led_looper_a.scoreboard_1_rom_address;
+    rom.scoreboard2 = led_looper_a.scoreboard_2_rom_address;
+    
+    matrix_led_driver.scoreboard1 = rom.scoreboard1_display;
+    matrix_led_driver.scoreboard2 = rom.scoreboard2_display;
+    
+    score_1 = matrix_led_driver.scoreboard_1_bit;
+    score_2 = matrix_led_driver.scoreboard_2_bit;
+    score_debug = score_calculation.debug;
+    
+    //debug signals
+    led_b_rom_address = registers.rb_data; 
+    debug_rand_start = 0; 
+    
+    
+  }
+}

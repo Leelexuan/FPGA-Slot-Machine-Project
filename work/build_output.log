@@ -1,0 +1,1233 @@
+Warnings in file C:\Users\Lee Le Xuan\OneDrive\Documents\SUTD Term 4\Computation Structures\FPGA\slot_machine_2\source\registers.luc:
+    Line 107, Column 25 : The signal "data" is wider than "score_2.d" and the most significant bits will be dropped
+    Line 105, Column 31 : The signal "data" is wider than "timer_display.d" and the most significant bits will be dropped
+    Line 106, Column 25 : The signal "data" is wider than "score_1.d" and the most significant bits will be dropped
+Warnings in file C:\Users\Lee Le Xuan\OneDrive\Documents\SUTD Term 4\Computation Structures\FPGA\slot_machine_2\source\alu.luc:
+    Line 46, Column 18 : The signal "b" is wider than "shifter.b" and the most significant bits will be dropped
+    Line 15, Column 2 : "multiplier" was never used
+Warnings in file C:\Users\Lee Le Xuan\OneDrive\Documents\SUTD Term 4\Computation Structures\FPGA\slot_machine_2\source\datapath.luc:
+    Line 167, Column 22 : The signal "led_looper_a.scoreboard_2_rom_address" is wider than "rom.scoreboard2" and the most significant bits will be dropped
+    Line 59, Column 20 : The signal "led_looper_a.led_a_rom_address" is wider than "rom.address_a" and the most significant bits will be dropped
+    Line 60, Column 20 : The signal "led_looper_a.led_b_rom_address" is wider than "rom.address_b" and the most significant bits will be dropped
+    Line 61, Column 20 : The signal "led_looper_a.led_c_rom_address" is wider than "rom.address_c" and the most significant bits will be dropped
+    Line 151, Column 16 : The signal "led_looper_a.timer_rom_address" is wider than "rom.timer" and the most significant bits will be dropped
+    Line 166, Column 22 : The signal "led_looper_a.scoreboard_1_rom_address" is wider than "rom.scoreboard1" and the most significant bits will be dropped
+Warnings in file C:\Users\Lee Le Xuan\OneDrive\Documents\SUTD Term 4\Computation Structures\FPGA\slot_machine_2\source\au_top.luc:
+    Line 11, Column 4 : "io_dip" was never used
+Starting Vivado...
+
+****** Vivado v2022.2 (64-bit)
+  **** SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+  **** IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source {C:\Users\Lee Le Xuan\OneDrive\Documents\SUTD Term 4\Computation Structures\FPGA\slot_machine_2\work\project.tcl}
+# set projDir "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/vivado"
+# set projName "slot_machine_2"
+# set topName top
+# set device xc7a35tftg256-1
+# if {[file exists "$projDir/$projName"]} { file delete -force "$projDir/$projName" }
+# create_project $projName "$projDir/$projName" -part $device
+# set_property design_mode RTL [get_filesets sources_1]
+# set verilogSources [list "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/au_top_0.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/output_hex_converter_1.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/reset_conditioner_2.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/multi_seven_seg_3.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/datapath_4.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/edge_detector_5.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/button_conditioner_6.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/counter_7.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/seven_segment_8.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/decoder_9.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/registers_10.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/led_looper_a_11.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/control_unit_12.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/matrix_led_driver_13.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/random_number_start_14.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/rom_15.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/alu_16.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/final_outputs_17.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/score_calculation_18.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/pipeline_19.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/counter_20.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/counter_21.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/counter_22.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/counter_23.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/modulus_24.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/counter_25.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/edge_detector_26.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/counter_27.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/counter_28.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/pn_gen_29.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/adder_30.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/boolean_31.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/shifter_32.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/comparator_33.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/multiplier_34.v" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/verilog/floor_division_35.v" ]
+# import_files -fileset [get_filesets sources_1] -force -norecurse $verilogSources
+# set xdcSources [list "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/work/constraint/custom.xdc" "C:/Users/Lee\ Le\ Xuan/OneDrive/Documents/SUTD\ Term\ 4/Computation\ Structures/FPGA/slot_machine_2/constraint/filename.xdc" ]
+# read_xdc $xdcSources
+# set_property STEPS.WRITE_BITSTREAM.ARGS.BIN_FILE true [get_runs impl_1]
+# update_compile_order -fileset sources_1
+# launch_runs -runs synth_1 -jobs 16
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Fri Apr 14 04:54:32 2023] Launched synth_1...
+Run output will be captured here: C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.runs/synth_1/runme.log
+# wait_on_run synth_1
+[Fri Apr 14 04:54:32 2023] Waiting for synth_1 to finish...
+
+
+*** Running vivado
+    with args -log au_top_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source au_top_0.tcl
+
+
+
+****** Vivado v2022.2 (64-bit)
+  **** SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+  **** IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source au_top_0.tcl -notrace
+Command: synth_design -top au_top_0 -part xc7a35tftg256-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tftg256-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 17668
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1185.961 ; gain = 407.793
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'au_top_0' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/au_top_0.v:7]
+INFO: [Synth 8-6157] synthesizing module 'output_hex_converter_1' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/output_hex_converter_1.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'output_hex_converter_1' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/output_hex_converter_1.v:7]
+INFO: [Synth 8-6157] synthesizing module 'reset_conditioner_2' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/reset_conditioner_2.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'reset_conditioner_2' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/reset_conditioner_2.v:11]
+INFO: [Synth 8-6157] synthesizing module 'multi_seven_seg_3' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/multi_seven_seg_3.v:12]
+INFO: [Synth 8-6157] synthesizing module 'counter_7' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_7.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'counter_7' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_7.v:14]
+INFO: [Synth 8-6157] synthesizing module 'seven_segment_8' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/seven_segment_8.v:7]
+INFO: [Synth 8-226] default block is never used [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/seven_segment_8.v:16]
+INFO: [Synth 8-6155] done synthesizing module 'seven_segment_8' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/seven_segment_8.v:7]
+INFO: [Synth 8-6157] synthesizing module 'decoder_9' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/decoder_9.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_9' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/decoder_9.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'multi_seven_seg_3' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/multi_seven_seg_3.v:12]
+INFO: [Synth 8-6157] synthesizing module 'datapath_4' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/datapath_4.v:7]
+INFO: [Synth 8-6157] synthesizing module 'registers_10' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/registers_10.v:7]
+INFO: [Synth 8-6157] synthesizing module 'counter_20' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_20.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'counter_20' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_20.v:14]
+INFO: [Synth 8-6157] synthesizing module 'counter_21' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_21.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'counter_21' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_21.v:14]
+INFO: [Synth 8-6157] synthesizing module 'counter_22' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_22.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'counter_22' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_22.v:14]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/registers_10.v:118]
+INFO: [Synth 8-6155] done synthesizing module 'registers_10' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/registers_10.v:7]
+INFO: [Synth 8-6157] synthesizing module 'led_looper_a_11' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/led_looper_a_11.v:7]
+INFO: [Synth 8-6157] synthesizing module 'counter_23' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_23.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'counter_23' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_23.v:14]
+INFO: [Synth 8-6157] synthesizing module 'modulus_24' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/modulus_24.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'modulus_24' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/modulus_24.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'led_looper_a_11' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/led_looper_a_11.v:7]
+INFO: [Synth 8-6157] synthesizing module 'control_unit_12' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/control_unit_12.v:7]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/control_unit_12.v:79]
+INFO: [Synth 8-6155] done synthesizing module 'control_unit_12' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/control_unit_12.v:7]
+INFO: [Synth 8-6157] synthesizing module 'matrix_led_driver_13' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/matrix_led_driver_13.v:12]
+INFO: [Synth 8-6157] synthesizing module 'counter_25' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_25.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'counter_25' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_25.v:14]
+INFO: [Synth 8-6157] synthesizing module 'edge_detector_5' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/edge_detector_5.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'edge_detector_5' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/edge_detector_5.v:12]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/matrix_led_driver_13.v:108]
+INFO: [Synth 8-6155] done synthesizing module 'matrix_led_driver_13' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/matrix_led_driver_13.v:12]
+INFO: [Synth 8-6157] synthesizing module 'random_number_start_14' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/random_number_start_14.v:11]
+INFO: [Synth 8-6157] synthesizing module 'edge_detector_26' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/edge_detector_26.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'edge_detector_26' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/edge_detector_26.v:12]
+INFO: [Synth 8-6157] synthesizing module 'counter_27' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_27.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'counter_27' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_27.v:14]
+INFO: [Synth 8-6157] synthesizing module 'counter_28' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_28.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'counter_28' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/counter_28.v:14]
+INFO: [Synth 8-6157] synthesizing module 'pn_gen_29' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/pn_gen_29.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'pn_gen_29' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/pn_gen_29.v:11]
+INFO: [Synth 8-226] default block is never used [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/random_number_start_14.v:81]
+INFO: [Synth 8-6155] done synthesizing module 'random_number_start_14' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/random_number_start_14.v:11]
+INFO: [Synth 8-6157] synthesizing module 'rom_15' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/rom_15.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'rom_15' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/rom_15.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_16' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/alu_16.v:7]
+INFO: [Synth 8-6157] synthesizing module 'adder_30' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/adder_30.v:7]
+INFO: [Synth 8-226] default block is never used [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/adder_30.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'adder_30' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/adder_30.v:7]
+INFO: [Synth 8-6157] synthesizing module 'boolean_31' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/boolean_31.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'boolean_31' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/boolean_31.v:7]
+INFO: [Synth 8-6157] synthesizing module 'shifter_32' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/shifter_32.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'shifter_32' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/shifter_32.v:7]
+INFO: [Synth 8-6157] synthesizing module 'comparator_33' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/comparator_33.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'comparator_33' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/comparator_33.v:7]
+INFO: [Synth 8-6157] synthesizing module 'multiplier_34' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/multiplier_34.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'multiplier_34' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/multiplier_34.v:7]
+INFO: [Synth 8-6157] synthesizing module 'floor_division_35' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/floor_division_35.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'floor_division_35' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/floor_division_35.v:7]
+INFO: [Synth 8-226] default block is never used [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/alu_16.v:113]
+INFO: [Synth 8-6155] done synthesizing module 'alu_16' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/alu_16.v:7]
+INFO: [Synth 8-6157] synthesizing module 'final_outputs_17' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/final_outputs_17.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'final_outputs_17' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/final_outputs_17.v:7]
+INFO: [Synth 8-6157] synthesizing module 'score_calculation_18' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/score_calculation_18.v:7]
+INFO: [Synth 8-226] default block is never used [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/score_calculation_18.v:41]
+INFO: [Synth 8-6155] done synthesizing module 'score_calculation_18' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/score_calculation_18.v:7]
+INFO: [Synth 8-226] default block is never used [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/datapath_4.v:294]
+INFO: [Synth 8-226] default block is never used [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/datapath_4.v:312]
+INFO: [Synth 8-226] default block is never used [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/datapath_4.v:333]
+INFO: [Synth 8-6155] done synthesizing module 'datapath_4' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/datapath_4.v:7]
+INFO: [Synth 8-6157] synthesizing module 'button_conditioner_6' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/button_conditioner_6.v:13]
+INFO: [Synth 8-6157] synthesizing module 'pipeline_19' [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/pipeline_19.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'pipeline_19' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/pipeline_19.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'button_conditioner_6' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/button_conditioner_6.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'au_top_0' (0#1) [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.srcs/sources_1/imports/verilog/au_top_0.v:7]
+WARNING: [Synth 8-3917] design au_top_0 has port led[7] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[6] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[5] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[4] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[3] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[2] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[1] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[0] driven by constant 0
+WARNING: [Synth 8-7129] Port alufn_signal[5] in module shifter_32 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[4] in module shifter_32 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[3] in module shifter_32 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[2] in module shifter_32 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[5] in module boolean_31 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[4] in module boolean_31 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[5] in module adder_30 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[4] in module adder_30 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[3] in module adder_30 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[2] in module adder_30 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alufn_signal[1] in module adder_30 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[4] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[3] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[2] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[1] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[23] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[22] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[21] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[20] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[19] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[18] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[17] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[16] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[15] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[14] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[13] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[12] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[11] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[10] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[9] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[8] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[7] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[6] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[5] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[4] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[3] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[2] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[1] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[0] in module au_top_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1285.680 ; gain = 507.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1285.680 ; gain = 507.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1285.680 ; gain = 507.512
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 1285.680 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/constraint/custom.xdc]
+Finished Parsing XDC File [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/constraint/custom.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/constraint/custom.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/au_top_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/constraint/filename.xdc]
+Finished Parsing XDC File [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/constraint/filename.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/constraint/filename.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/au_top_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1356.070 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1356.070 ; gain = 0.000
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1356.070 ; gain = 577.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tftg256-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1356.070 ; gain = 577.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1356.070 ; gain = 577.902
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'M_machine_state_q_reg' in module 'control_unit_12'
+INFO: [Synth 8-802] inferred FSM for state register 'M_state_q_reg' in module 'matrix_led_driver_13'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+START_SET_A_machine_state |                           000000 |                           000000
+START_SET_B_machine_state |                           000001 |                           000001
+START_SET_C_machine_state |                           000010 |                           000010
+   START_A_machine_state |                           000011 |                           000011
+   START_B_machine_state |                           000100 |                           000100
+   START_C_machine_state |                           000101 |                           000101
+CHECK_COIN_machine_state |                           000110 |                           000110
+CHECK_LEVER_machine_state |                           000111 |                           000111
+DISPLAY_TIMER_machine_state |                           001000 |                           001000
+CHECK_TIMER_machine_state |                           001001 |                           001001
+    ROLL_A_machine_state |                           001010 |                           001010
+    ROLL_B_machine_state |                           001011 |                           001011
+    ROLL_C_machine_state |                           001100 |                           001100
+DISPLAY_STOPPED_A_machine_state |                           001101 |                           011100
+      STOP_machine_state |                           001110 |                           001101
+SECOND_ROLL_B_1_machine_state |                           001111 |                           010111
+SECOND_ROLL_C_1_machine_state |                           010000 |                           011000
+DISPLAY_TIMER_2_machine_state |                           010001 |                           010101
+CHECK_TIMER_2_machine_state |                           010010 |                           010110
+STORE_STOP_B_machine_state |                           010011 |                           001110
+STORE_STOP_C_machine_state |                           010100 |                           001111
+CHECK_STOP_B_machine_state |                           010101 |                           010000
+DISPLAY_STOPPED_B_machine_state |                           010110 |                           011101
+LAST_ROLL_C_1_machine_state |                           010111 |                           011011
+DISPLAY_TIMER_3_machine_state |                           011000 |                           011001
+CHECK_TIMER_3_machine_state |                           011001 |                           011010
+CHECK_STOP_C_machine_state |                           011010 |                           010011
+DISPLAY_STOPPED_C_machine_state |                           011011 |                           011110
+DISPLAY_SCORE_1_machine_state |                           011100 |                           011111
+DISPLAY_SCORE_2_machine_state |                           011101 |                           100000
+       END_machine_state |                           011110 |                           100001
+RESET_TIMER_machine_state |                           011111 |                           100010
+RESET_SCORE_1_machine_state |                           100000 |                           100011
+RESET_SCORE_2_machine_state |                           100001 |                           100100
+LAST_ROLL_C_0_machine_state |                           100010 |                           010100
+SECOND_ROLL_B_0_machine_state |                           100011 |                           010001
+SECOND_ROLL_C_0_machine_state |                           100100 |                           010010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'M_machine_state_q_reg' using encoding 'sequential' in module 'control_unit_12'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+              IDLE_state |                              000 |                              100
+              LOAD_state |                              001 |                              000
+          TRANSFER_state |                              010 |                              001
+             LATCH_state |                              011 |                              010
+             RESET_state |                              100 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'M_state_q_reg' using encoding 'sequential' in module 'matrix_led_driver_13'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1356.070 ; gain = 577.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 2     
+	   2 Input   30 Bit       Adders := 1     
+	   2 Input   16 Bit       Adders := 6     
+	   3 Input   16 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 1     
+	   3 Input    2 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 2     
+	   4 Input     32 Bit         XORs := 1     
+	   2 Input     16 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 4     
+	               30 Bit    Registers := 1     
+	               16 Bit    Registers := 22    
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 5     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 1     
+	   2 Input   30 Bit        Muxes := 1     
+	   5 Input   16 Bit        Muxes := 6     
+	   2 Input   16 Bit        Muxes := 2     
+	   6 Input   16 Bit        Muxes := 1     
+	   4 Input   16 Bit        Muxes := 5     
+	   3 Input   16 Bit        Muxes := 1     
+	  37 Input    6 Bit        Muxes := 2     
+	   2 Input    6 Bit        Muxes := 18    
+	   4 Input    6 Bit        Muxes := 1     
+	  37 Input    5 Bit        Muxes := 3     
+	   4 Input    4 Bit        Muxes := 1     
+	   5 Input    3 Bit        Muxes := 3     
+	   6 Input    3 Bit        Muxes := 1     
+	   4 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	  37 Input    2 Bit        Muxes := 2     
+	   5 Input    2 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 1     
+	  12 Input    1 Bit        Muxes := 11    
+	  37 Input    1 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 5     
+	   5 Input    1 Bit        Muxes := 13    
+	   4 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP modulus/out0, operation Mode is: C-A*B.
+DSP Report: operator modulus/out0 is absorbed into DSP modulus/out0.
+DSP Report: operator modulus/out1 is absorbed into DSP modulus/out0.
+WARNING: [Synth 8-3917] design au_top_0 has port led[7] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[6] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[5] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[4] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[3] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[2] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[1] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port led[0] driven by constant 0
+WARNING: [Synth 8-3917] design au_top_0 has port io_seg[7] driven by constant 1
+WARNING: [Synth 8-7129] Port address_a[7] in module rom_15 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address_a[6] in module rom_15 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address_a[5] in module rom_15 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port timer[7] in module rom_15 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port scoreboard1[7] in module rom_15 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port scoreboard2[7] in module rom_15 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dataout[3] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rst_n in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[4] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[3] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[2] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_button[1] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[23] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[22] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[21] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[20] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[19] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[18] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[17] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[16] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[15] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[14] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[13] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[12] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[11] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[10] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[9] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[8] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[7] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[6] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[5] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[4] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[3] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[2] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[1] in module au_top_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_dip[0] in module au_top_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 1356.070 ; gain = 577.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|modulus_24  | C-A*B       | 16     | 16     | 16     | -      | 16     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 1356.070 ; gain = 577.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1379.824 ; gain = 601.656
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1397.891 ; gain = 619.723
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1397.891 ; gain = 619.723
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1397.891 ; gain = 619.723
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1397.891 ; gain = 619.723
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1397.891 ; gain = 619.723
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1397.891 ; gain = 619.723
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1397.891 ; gain = 619.723
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    93|
+|3     |LUT1   |    51|
+|4     |LUT2   |    48|
+|5     |LUT3   |    40|
+|6     |LUT4   |   172|
+|7     |LUT5   |    94|
+|8     |LUT6   |   257|
+|9     |MUXF7  |    16|
+|10    |FDRE   |   682|
+|11    |FDSE   |    47|
+|12    |IBUF   |     7|
+|13    |OBUF   |    53|
+|14    |OBUFT  |     1|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1397.891 ; gain = 619.723
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 46 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:42 . Memory (MB): peak = 1397.891 ; gain = 549.332
+Synthesis Optimization Complete : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1397.891 ; gain = 619.723
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1400.742 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 109 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1404.430 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: 6e011b67
+INFO: [Common 17-83] Releasing license: Synthesis
+105 Infos, 93 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 1404.430 ; gain = 1026.344
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.runs/synth_1/au_top_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file au_top_0_utilization_synth.rpt -pb au_top_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 14 04:55:32 2023...
+[Fri Apr 14 04:55:38 2023] synth_1 finished
+wait_on_runs: Time (s): cpu = 00:00:00 ; elapsed = 00:01:05 . Memory (MB): peak = 403.344 ; gain = 0.000
+# launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Fri Apr 14 04:55:38 2023] Launched impl_1...
+Run output will be captured here: C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.runs/impl_1/runme.log
+# wait_on_run impl_1
+[Fri Apr 14 04:55:38 2023] Waiting for impl_1 to finish...
+
+
+*** Running vivado
+    with args -log au_top_0.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source au_top_0.tcl -notrace
+
+
+
+****** Vivado v2022.2 (64-bit)
+  **** SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+  **** IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source au_top_0.tcl -notrace
+Command: link_design -top au_top_0 -part xc7a35tftg256-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7a35tftg256-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 781.898 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 109 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2022.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/constraint/custom.xdc]
+Finished Parsing XDC File [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/constraint/custom.xdc]
+Parsing XDC File [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/constraint/filename.xdc]
+Finished Parsing XDC File [C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/constraint/filename.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 913.379 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+7 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 917.379 ; gain = 533.766
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.915 . Memory (MB): peak = 938.227 ; gain = 20.848
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 93325664
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1487.453 ; gain = 549.227
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-1287] Pulled Inverter datapath/control_unit/out1_carry_i_1 into driver instance datapath/control_unit/out1_carry_i_10, which resulted in an inversion of 2 pins
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: ad90a000
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.053 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 1 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: 8538c623
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.062 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: f08b259c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.077 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 0 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: f08b259c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.117 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 5 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 5 Shift Register Optimization | Checksum: f08b259c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.120 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: f08b259c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.124 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |               0  |               1  |                                              0  |
+|  Constant propagation         |               0  |               0  |                                              0  |
+|  Sweep                        |               0  |               0  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Ending Logic Optimization Task | Checksum: 157e4ec25
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.169 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: 157e4ec25
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 157e4ec25
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: 157e4ec25
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+25 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1824.141 ; gain = 906.762
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.runs/impl_1/au_top_0_opt.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file au_top_0_drc_opted.rpt -pb au_top_0_drc_opted.pb -rpx au_top_0_drc_opted.rpx
+Command: report_drc -file au_top_0_drc_opted.rpt -pb au_top_0_drc_opted.pb -rpx au_top_0_drc_opted.rpx
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.runs/impl_1/au_top_0_drc_opted.rpt.
+report_drc completed successfully
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 63fb9b30
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+WARNING: [Place 30-87] Partially locked IO Bus is found. Following components of the IO Bus dataout are not locked:  'dataout[3]' 
+WARNING: [Place 30-87] Partially locked IO Bus is found. Following components of the IO Bus io_dip are not locked:  'io_dip[23]'  'io_dip[22]'  'io_dip[21]'  'io_dip[20]'  'io_dip[19]'  'io_dip[18]'  'io_dip[17]'  'io_dip[16]'  'io_dip[13]'  'io_dip[12]'  'io_dip[9]'  'io_dip[8]' 
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 10af4df22
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.227 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 1c94bedf7
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.469 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 1c94bedf7
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.471 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Phase 1 Placer Initialization | Checksum: 1c94bedf7
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.475 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 1859e052a
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.592 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 14aa87fb1
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.667 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 14aa87fb1
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.670 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 2.4 Global Placement Core
+
+Phase 2.4.1 UpdateTiming Before Physical Synthesis
+Phase 2.4.1 UpdateTiming Before Physical Synthesis | Checksum: 16f0b645c
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 2.4.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 4 LUTNM shape to break, 10 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 4, two critical 0, total 4, new lutff created 0
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 9 nets or LUTs. Breaked 4 LUTs, combined 5 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1123] No candidate cells found for Shift Register to Pipeline optimization
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-677] No candidate cells for Shift Register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |            4  |              5  |                     9  |           0  |           1  |  00:00:00  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |            4  |              5  |                     9  |           0  |           9  |  00:00:00  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.4.2 Physical Synthesis In Placer | Checksum: 1f6d33b67
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:03 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Phase 2.4 Global Placement Core | Checksum: 1c0bade84
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:03 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Phase 2 Global Placement | Checksum: 1c0bade84
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:03 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 1c76dfe9a
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:03 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 148f53763
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:03 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 14df55973
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:03 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 17a6ce645
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:03 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 3.5 Fast Optimization
+Phase 3.5 Fast Optimization | Checksum: 136d9a1d6
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:03 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 3.6 Small Shape Detail Placement
+Phase 3.6 Small Shape Detail Placement | Checksum: 8f093cc5
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 3.7 Re-assign LUT pins
+Phase 3.7 Re-assign LUT pins | Checksum: bb184631
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 3.8 Pipeline Register Optimization
+Phase 3.8 Pipeline Register Optimization | Checksum: 18d6be1c6
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Phase 3 Detail Placement | Checksum: 18d6be1c6
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: fc852ffe
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=0.117 | TNS=0.000 |
+Phase 1 Physical Synthesis Initialization | Checksum: 1ad39a4f2
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Place 46-56] BUFG insertion identified 0 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 0, Skipped due to Timing Degradation: 0, Skipped due to Illegal Netlist: 0.
+Ending Physical Synthesis Task | Checksum: 1a821f0a2
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Phase 4.1.1.1 BUFG Insertion | Checksum: fc852ffe
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=0.509. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 1c335ccd6
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Phase 4.1 Post Commit Optimization | Checksum: 1c335ccd6
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 1c335ccd6
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ____________________________________________________
+|           | Global Congestion | Short Congestion  |
+| Direction | Region Size       | Region Size       |
+|___________|___________________|___________________|
+|      North|                1x1|                1x1|
+|___________|___________________|___________________|
+|      South|                1x1|                1x1|
+|___________|___________________|___________________|
+|       East|                1x1|                1x1|
+|___________|___________________|___________________|
+|       West|                1x1|                1x1|
+|___________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 1c335ccd6
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Phase 4.3 Placer Reporting | Checksum: 1c335ccd6
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1824.141 ; gain = 0.000
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 227539eb2
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Ending Placer Task | Checksum: 1afd39161
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+67 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.112 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.runs/impl_1/au_top_0_placed.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_io -file au_top_0_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.055 . Memory (MB): peak = 1824.141 ; gain = 0.000
+INFO: [runtcl-4] Executing : report_utilization -file au_top_0_utilization_placed.rpt -pb au_top_0_utilization_placed.pb
+INFO: [runtcl-4] Executing : report_control_sets -verbose -file au_top_0_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1824.141 ; gain = 0.000
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.150 . Memory (MB): peak = 1826.145 ; gain = 2.004
+INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. Skipping all physical synthesis optimizations.
+INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
+INFO: [Common 17-83] Releasing license: Implementation
+76 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.132 . Memory (MB): peak = 1844.012 ; gain = 8.992
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.runs/impl_1/au_top_0_physopt.dcp' has been generated.
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors, 2 Warnings
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: dab1fbd9 ConstDB: 0 ShapeSum: d5219588 RouteDB: 0
+Post Restoration Checksum: NetGraph: 74b7c35e NumContArr: a969d2a1 Constraints: 0 Timing: 0
+Phase 1 Build RT Design | Checksum: 11e2195ff
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:17 . Memory (MB): peak = 1930.961 ; gain = 75.801
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 11e2195ff
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:17 . Memory (MB): peak = 1936.992 ; gain = 81.832
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 11e2195ff
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:17 . Memory (MB): peak = 1936.992 ; gain = 81.832
+ Number of Nodes with overlaps = 0
+
+Phase 2.3 Update Timing
+Phase 2.3 Update Timing | Checksum: 2046fa08b
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:17 . Memory (MB): peak = 1942.562 ; gain = 87.402
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.671  | TNS=0.000  | WHS=-0.145 | THS=-6.362 |
+
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0 %
+  Global Horizontal Routing Utilization  = 0 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 1280
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 1280
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 2 Router Initialization | Checksum: 20e8a4ee0
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:17 . Memory (MB): peak = 1945.520 ; gain = 90.359
+
+Phase 3 Initial Routing
+
+Phase 3.1 Global Routing
+Phase 3.1 Global Routing | Checksum: 20e8a4ee0
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:17 . Memory (MB): peak = 1945.520 ; gain = 90.359
+Phase 3 Initial Routing | Checksum: b798a84d
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:17 . Memory (MB): peak = 1945.520 ; gain = 90.359
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 392
+ Number of Nodes with overlaps = 180
+ Number of Nodes with overlaps = 117
+ Number of Nodes with overlaps = 61
+ Number of Nodes with overlaps = 43
+ Number of Nodes with overlaps = 19
+ Number of Nodes with overlaps = 11
+ Number of Nodes with overlaps = 6
+ Number of Nodes with overlaps = 6
+ Number of Nodes with overlaps = 5
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.104  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: 1be06dfd6
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1945.520 ; gain = 90.359
+Phase 4 Rip-up And Reroute | Checksum: 1be06dfd6
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1945.520 ; gain = 90.359
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+
+Phase 5.1.1 Update Timing
+Phase 5.1.1 Update Timing | Checksum: 1143915fb
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1945.520 ; gain = 90.359
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.198  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 5.1 Delay CleanUp | Checksum: 1143915fb
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1945.520 ; gain = 90.359
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 1143915fb
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1945.520 ; gain = 90.359
+Phase 5 Delay and Skew Optimization | Checksum: 1143915fb
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1945.520 ; gain = 90.359
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 1287c0777
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1945.520 ; gain = 90.359
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.198  | TNS=0.000  | WHS=0.115  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 15a0b84fc
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1945.520 ; gain = 90.359
+Phase 6 Post Hold Fix | Checksum: 15a0b84fc
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1945.520 ; gain = 90.359
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.320418 %
+  Global Horizontal Routing Utilization  = 0.364133 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 7 Route finalize | Checksum: 114dcbfab
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1945.520 ; gain = 90.359
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 114dcbfab
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1946.184 ; gain = 91.023
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: cd1d6be8
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1946.184 ; gain = 91.023
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=0.198  | TNS=0.000  | WHS=0.115  | THS=0.000  |
+
+INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
+Phase 10 Post Router Timing | Checksum: cd1d6be8
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1946.184 ; gain = 91.023
+INFO: [Route 35-16] Router Completed Successfully
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 1946.184 ; gain = 91.023
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+91 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:26 ; elapsed = 00:00:22 . Memory (MB): peak = 1946.184 ; gain = 102.172
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.142 . Memory (MB): peak = 1959.984 ; gain = 13.801
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.runs/impl_1/au_top_0_routed.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file au_top_0_drc_routed.rpt -pb au_top_0_drc_routed.pb -rpx au_top_0_drc_routed.rpx
+Command: report_drc -file au_top_0_drc_routed.rpt -pb au_top_0_drc_routed.pb -rpx au_top_0_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.runs/impl_1/au_top_0_drc_routed.rpt.
+report_drc completed successfully
+INFO: [runtcl-4] Executing : report_methodology -file au_top_0_methodology_drc_routed.rpt -pb au_top_0_methodology_drc_routed.pb -rpx au_top_0_methodology_drc_routed.rpx
+Command: report_methodology -file au_top_0_methodology_drc_routed.rpt -pb au_top_0_methodology_drc_routed.pb -rpx au_top_0_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 2 threads
+INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file C:/Users/Lee Le Xuan/OneDrive/Documents/SUTD Term 4/Computation Structures/FPGA/slot_machine_2/work/vivado/slot_machine_2/slot_machine_2.runs/impl_1/au_top_0_methodology_drc_routed.rpt.
+report_methodology completed successfully
+INFO: [runtcl-4] Executing : report_power -file au_top_0_power_routed.rpt -pb au_top_0_power_summary_routed.pb -rpx au_top_0_power_routed.rpx
+Command: report_power -file au_top_0_power_routed.rpt -pb au_top_0_power_summary_routed.pb -rpx au_top_0_power_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+103 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [runtcl-4] Executing : report_route_status -file au_top_0_route_status.rpt -pb au_top_0_route_status.pb
+INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -report_unconstrained -file au_top_0_timing_summary_routed.rpt -pb au_top_0_timing_summary_routed.pb -rpx au_top_0_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+INFO: [runtcl-4] Executing : report_incremental_reuse -file au_top_0_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [runtcl-4] Executing : report_clock_utilization -file au_top_0_clock_utilization_routed.rpt
+INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file au_top_0_bus_skew_routed.rpt -pb au_top_0_bus_skew_routed.pb -rpx au_top_0_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+Command: write_bitstream -force au_top_0.bit -bin_file
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+WARNING: [DRC NSTD-1] Unspecified I/O Standard: 1 out of 61 logical ports use I/O standard (IOSTANDARD) value 'DEFAULT', instead of a user assigned specific value. This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all I/O standards. This design will fail to generate a bitstream unless all logical ports have a user specified I/O standard value defined. To allow bitstream creation with unspecified I/O standard values (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks NSTD-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run. Problem ports: dataout[3].
+WARNING: [DRC UCIO-1] Unconstrained Logical Port: 1 out of 61 logical ports have no user assigned specific location constraint (LOC). This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all pin locations. This design will fail to generate a bitstream unless all logical ports have a user specified site LOC constraint defined.  To allow bitstream creation with unspecified pin locations (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks UCIO-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run.  Problem ports: dataout[3].
+INFO: [Vivado 12-3199] DRC finished with 0 Errors, 2 Warnings
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+INFO: [Designutils 20-2272] Running write_bitstream with 2 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Bitstream compression saved 13722720 bits.
+Writing bitstream ./au_top_0.bit...
+Writing bitstream ./au_top_0.bin...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Project 1-1876] WebTalk data collection is mandatory when using a ULT device. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
+INFO: [Common 17-83] Releasing license: Implementation
+12 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 2426.984 ; gain = 440.859
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 14 04:56:50 2023...
+[Fri Apr 14 04:56:54 2023] impl_1 finished
+wait_on_runs: Time (s): cpu = 00:00:00 ; elapsed = 00:01:16 . Memory (MB): peak = 403.344 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 14 04:56:54 2023...
+Vivado exited.
+
+Finished building project.

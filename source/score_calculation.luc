@@ -1,0 +1,62 @@
+module score_calculation (
+    input output_a[16],
+    input output_b[16],
+    input output_c[16],
+    output output_screen_1[4],
+    output output_screen_2[4],
+    
+    output debug[8]
+  ) {
+
+sig seven_count[2];
+  
+  always {
+  
+    output_screen_1 = 0;
+    output_screen_2 = 0;
+   seven_count = 0;
+    debug = 0;
+    
+    
+   if (output_a == 16b0){
+    seven_count = seven_count + 1;}
+   else{
+    seven_count = seven_count + 0;}
+   
+    if (output_b == 16b0){
+    seven_count = seven_count + 1;}
+   else{
+    seven_count = seven_count + 0;}
+      
+    if (output_c == 16b0){
+    seven_count = seven_count + 1;}
+   else{
+    seven_count = seven_count + 0;}
+    
+      case(seven_count){
+      
+        b00:
+          output_screen_1 = b0;
+          output_screen_2 = b0;
+          debug = h0;
+        b01:
+          output_screen_1 = b0;
+          output_screen_2 = b1;
+          debug = h1;
+        b10:
+          output_screen_1 = b0;
+          output_screen_2 = h4;
+          debug = h4;
+        b11:
+          output_screen_1 = h2;
+          output_screen_2 = b0;
+          debug = h20;
+        
+        default:
+          output_screen_1 = b0;
+          output_screen_2 = b0;
+          debug = h0;}
+     
+      
+  }
+}

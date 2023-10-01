@@ -1,0 +1,68 @@
+module led_looper_a (
+    input clk,  // clock
+    input rst,  // reset
+    input reg_a[16],
+    input reg_b[16],
+    input reg_c[16],
+    input timer[4],
+    input scoreboard_1[4],
+    input scoreboard_2[4],
+    
+    output led_a_rom_address[16],
+    output led_b_rom_address[16],
+    output led_c_rom_address[16],
+    output timer_rom_address[16],
+    output scoreboard_1_rom_address[16],
+    output scoreboard_2_rom_address[16],
+    output pixel[4]
+    
+  ) {
+  .clk(clk){
+  .rst(rst){
+    
+    //testing for LED matrix
+    counter looper(#SIZE(3), #DIV(16), #TOP(7));}}
+
+   
+  modulus modulusA;
+  modulus modulusB;
+  modulus modulusC;
+  
+  
+      
+  always {
+  
+    pixel = 0;
+    
+    
+    //adds current value of counter (value can only be accessed using .value (think of it as attribute))
+    modulusA.a =  reg_a + looper.value;
+    modulusB.a = reg_b + looper.value;
+    modulusC.a = reg_c + looper.value;
+    
+    //find remainder after division (modulus) so that it will loop back to 0 when the value exceeds 31
+    //32 because there is currently 32 bits of dummy data in the ROM
+    modulusA.b = d32;
+    modulusB.b = d32;
+    modulusC.b = d32;
+    
+    
+    //led_a_out is value of 0 or 1, indicates whether led is lit up or not 
+    //based on value in ROM that has the address of modulus.out
+    led_a_rom_address = modulusA.out;
+    led_b_rom_address = modulusB.out;
+    led_c_rom_address = modulusC.out;
+    
+    //timer
+    timer_rom_address = timer*b1000 + looper.value;
+    
+    //scoreboard 
+    scoreboard_1_rom_address = scoreboard_1*b1000 + looper.value;
+    scoreboard_2_rom_address = scoreboard_2*b1000 + looper.value;
+    
+    //pixel is basically to indicate which bit of LED to light up
+    pixel = looper.value;
+    
+    
+  }
+}

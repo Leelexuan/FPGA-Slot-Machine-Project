@@ -1,0 +1,15 @@
+module final_outputs (
+    input led_a[16],
+    input led_b[16],
+    input led_c[16],
+    output out_a[16],
+    output out_b[16],
+    output out_c[16]
+  ) {
+
+  always {
+    out_a = ((led_a+4)/d8)*d8;
+    out_b = ((led_b+4)/d8)*d8;
+    out_c = ((led_c+4)/d8)*d8;
+  }
+}

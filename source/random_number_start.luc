@@ -1,0 +1,99 @@
+module random_number_start
+#(
+SEED = 128h843233523a613966423b622562592c62: SEED.WIDTH == 128 && SEED[95:0] != 0
+  )
+  (
+    input clk,  // clock
+    input rst,
+    output start_A[6],
+    output start_B[6],
+    output start_C[6],
+    output debug[16]
+  ) {
+
+  
+.clk(clk){
+   edge_detector edge_detector_rng;
+   edge_detector edge_detector_seed;
+   dff seed[16]; //don't reset the seed because we don't want the same random number each time we press reset
+    
+  .rst(rst){
+     counter slowclock_forvariablecounter(#SIZE(1),#DIV(18)); //to increase seed
+     counter slowerclock(#SIZE(1), #DIV(27)); //to generate random number
+     pn_gen random_number;
+    }
+ }
+  
+sig temp_pointer[3];
+sig random_start_A[3];
+sig random_start_B[3];
+sig random_start_C[3];
+  
+always {
+    random_number.seed = seed.q;
+    
+    edge_detector_rng.in = slowerclock.value;
+    random_number.next = edge_detector_rng.out;
+    
+    edge_detector_seed.in = slowclock_forvariablecounter.value;
+    
+
+    temp_pointer = random_number.num[2:0];
+    
+    if(edge_detector_seed.out){
+      seed.d = seed.q + 1;
+    }
+    
+    case (temp_pointer){
+      0 :
+        random_start_A = random_number.num[1:0];
+        random_start_B = random_number.num[6:5];
+        random_start_C = random_number.num[13:12];
+      1 : 
+        random_start_A = random_number.num[2:1];
+        random_start_B = random_number.num[7:6];
+        random_start_C = random_number.num[14:13]; 
+      2 : 
+        random_start_A = random_number.num[3:2];
+        random_start_B = random_number.num[8:7];
+        random_start_C = random_number.num[14:13];
+         
+      3 : 
+        random_start_A = random_number.num[4:3]; 
+        random_start_B = random_number.num[9:8];
+        random_start_C = random_number.num[15:14];
+        
+      4 : 
+        random_start_A = random_number.num[5:4]; 
+        random_start_B = random_number.num[10:9];
+        random_start_C = random_number.num[16:15];
+        
+      5 : 
+        random_start_A = random_number.num[6:5];
+        random_start_B = random_number.num[11:10];
+        random_start_C = random_number.num[17:16]; 
+      6 : 
+        random_start_A = random_number.num[7:6]; 
+        random_start_B = random_number.num[12:11];
+        random_start_C = random_number.num[18:17];
+        
+      7 : 
+        random_start_A = random_number.num[8:7]; 
+        random_start_B = random_number.num[13:12];
+        random_start_C = random_number.num[19:18];
+      
+      default: 
+        random_start_A = 0; 
+        random_start_B = 0;
+        random_start_C = 0;
+      
+    } 
+    
+    start_A = random_start_A*b1000;
+    start_B = random_start_B*b1000;
+    start_C = random_start_C*b1000;
+    
+    debug = random_start_A;
+    
+  }
+}

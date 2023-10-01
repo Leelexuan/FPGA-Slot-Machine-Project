@@ -1,0 +1,577 @@
+module control_unit (
+    input clk,  // clock
+    input rst,  // reset
+    
+    //buttons
+    input io_button_0, //main button 
+    input io_button_1, //coin 
+    input io_button_2, //lever 
+    
+    input alu_out[16], 
+    input mode,
+    
+    //select signals
+    output alufn[6],
+    output asel[2],
+    output bsel[2],
+    output wdsel[2],
+    
+    //regfile signals
+    output we[1],
+    output ra[5],
+    output rb[5],
+    output rc[5]
+    
+    //debug
+    //output debug_start_A[16]
+  ) {
+  
+   
+  
+  .clk(clk){
+    .rst(rst){
+    fsm machine_state={
+      //set to reference dff
+      START_SET_A,
+      START_SET_B,
+      START_SET_C,
+      
+      //set to dffs that output to ROM
+      START_A,
+      START_B,
+      START_C,
+        
+      //coin 
+      CHECK_COIN,
+        
+      //lever 
+      CHECK_LEVER,
+         
+      //press button to start
+      DISPLAY_TIMER,
+      CHECK_TIMER,
+      ROLL_A,
+      ROLL_B,
+      ROLL_C,
+      
+      //press button to stop
+      STOP,
+      STORE_STOP_B,
+      STORE_STOP_C,
+      CHECK_STOP_B,
+        
+      // MODE 0
+      //A stopped rolling, B and C left
+      SECOND_ROLL_B_0,
+      SECOND_ROLL_C_0,
+         
+      //B stopped rolling, C left
+      CHECK_STOP_C,
+      LAST_ROLL_C_0,
+        
+      //MODE 1
+      
+      DISPLAY_TIMER_2,
+      CHECK_TIMER_2,
+      SECOND_ROLL_B_1,
+      SECOND_ROLL_C_1,
+      
+      DISPLAY_TIMER_3,
+      CHECK_TIMER_3,
+      LAST_ROLL_C_1,
+        
+      //Operations for outputs - to display full symbol
+      DISPLAY_STOPPED_A,
+      DISPLAY_STOPPED_B,
+      DISPLAY_STOPPED_C,
+        
+      DISPLAY_SCORE_1,
+      DISPLAY_SCORE_2,
+       
+           
+      END,
+      RESET_TIMER,
+      RESET_SCORE_1,
+      RESET_SCORE_2
+      
+
+     
+  };}}
+
+  always {
+  
+    alufn = 0;
+    asel = 0;
+    bsel = 0;
+    wdsel = 0;
+    
+    we = 0;
+    ra = 0;
+    rb = 0;
+    rc = 0;
+    
+    case(machine_state.q){
+        
+      
+      machine_state.START_SET_A:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b01;
+        we = 1;
+        ra = 0;
+        rb = 0;
+        rc = h9;
+        machine_state.d = machine_state.START_SET_B;
+        
+      machine_state.START_SET_B:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b10;
+        we = 1;
+        ra = 0;
+        rb = 0;
+        rc = hA;
+        machine_state.d = machine_state.START_SET_C;
+      
+      machine_state.START_SET_C:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b11;
+        we = 1;
+        ra = 0;
+        rb = 0;
+        rc = hB;
+        machine_state.d = machine_state.START_A; 
+        
+      machine_state.START_A: //reference start_set_a
+        alufn = b011010; //"A"
+        asel = b00; 
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = h9;
+        rb = 0;
+        rc = h0; //led_a
+        machine_state.d = machine_state.START_B;
+        
+      machine_state.START_B:
+        alufn = b011010; //"A"
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = hA;
+        rb = 0;
+        rc = h4; //led_b
+        machine_state.d = machine_state.START_C;
+      
+      machine_state.START_C:
+        alufn = b011010; //"A"
+        asel = b00; 
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = hB;
+        rb = 0;
+        rc = h7; //led_c
+        machine_state.d = machine_state.CHECK_COIN; 
+         
+      machine_state.CHECK_COIN:
+        if (io_button_1){
+          machine_state.d = machine_state.CHECK_LEVER;}
+        else{
+          machine_state.d = machine_state.CHECK_COIN;}
+          
+      machine_state.CHECK_LEVER:
+        if (io_button_2){
+          machine_state.d = machine_state.DISPLAY_TIMER;}
+        else{
+          machine_state.d = machine_state.CHECK_LEVER;}
+        
+      machine_state.DISPLAY_TIMER:
+        alufn = 6b011010;
+        asel = b00; 
+        bsel = b00; 
+        wdsel = b00;
+        
+        we = 1;
+        ra = h11; //timer_counter_dff
+        rb = h0; 
+        rc = h15; //timer_display
+        machine_state.d = machine_state.CHECK_TIMER;
+        
+      machine_state.CHECK_TIMER:
+        alufn = 6b110011; //cmpeq
+        asel = b11; //0
+        bsel = b00; 
+        wdsel = b00;
+        
+        we = 0;
+        ra = h0; 
+        rb = h15; //timer_display 
+        rc = h0; 
+        if (alu_out == 16b1){
+          machine_state.d = machine_state.END;}
+        else{
+          machine_state.d = machine_state.ROLL_A;}
+          
+      machine_state.ROLL_A:
+        alufn = 6b0;
+        asel = b00; 
+        bsel = b00; 
+        wdsel = b00;
+        
+        we = 1;
+        ra = h9; //base
+        rb = hD; //counter
+        rc = h0; //led_a
+        if (io_button_0){
+          machine_state.d = machine_state.DISPLAY_STOPPED_A;}
+        else{
+          machine_state.d = machine_state.ROLL_B;}
+          
+        
+      machine_state.ROLL_B:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = hA; //reference
+        rb = hD; //counter
+        rc = h4; //led_b
+        if (io_button_0){
+          machine_state.d = machine_state.DISPLAY_STOPPED_A;}
+        else{
+          machine_state.d = machine_state.ROLL_C;}
+   
+        
+      machine_state.ROLL_C:
+        alufn = 6b0;
+        asel = b10;
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = hB; //reference
+        rb = hD; //counter
+        rc = h7; //led_c
+        if (io_button_0){
+          machine_state.d = machine_state.DISPLAY_STOPPED_A;}
+        else{
+          machine_state.d = machine_state.DISPLAY_TIMER;}
+      
+      machine_state.STOP:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 0;
+        ra = h0;
+        rb = h0;
+        rc = h0;
+        if (mode == 1){
+          machine_state.d = machine_state.SECOND_ROLL_B_1;}
+        else{  
+          machine_state.d = machine_state.STORE_STOP_B;}
+ 
+//////////////////////////////////////// MODE 0 ////////////////////////////////////////////////////////////////////////
+                       
+      machine_state.STORE_STOP_B:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b10;
+        we = 1;
+        ra = 0;
+        rb = 0;
+        rc = hE;
+        machine_state.d = machine_state.STORE_STOP_C;
+      
+      machine_state.STORE_STOP_C:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b11;
+        we = 1;
+        ra = 0;
+        rb = 0;
+        rc = hF;
+        machine_state.d = machine_state.CHECK_STOP_B;
+        
+      machine_state.CHECK_STOP_B:
+        alufn = b110011;
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 0;
+        ra = h10; //stop_counter
+        rb = hE;  //stop_b
+        rc = h0; 
+        if (alu_out == 16b1){
+          machine_state.d = machine_state.DISPLAY_STOPPED_B;
+        }
+        else{
+          machine_state.d = machine_state.SECOND_ROLL_B_0;}
+          
+        
+      machine_state.SECOND_ROLL_B_0:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = hA; //reference
+        rb = hD; //counter
+        rc = h4; //led_b
+        machine_state.d = machine_state.SECOND_ROLL_C_0;
+        
+        
+      machine_state.SECOND_ROLL_C_0:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = hB; //reference
+        rb = hD; //counter
+        rc = h7; //led_c
+        machine_state.d = machine_state.CHECK_STOP_B;
+           
+        
+      machine_state.CHECK_STOP_C:
+        alufn = b110011;
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 0;
+        ra = h10; //stop_counter
+        rb = hF; //stop_c
+        rc = h0; 
+        if (alu_out == 16b1){
+          machine_state.d = machine_state.DISPLAY_STOPPED_C;
+        }
+        else{
+          machine_state.d = machine_state.LAST_ROLL_C_0;}
+        
+      machine_state.LAST_ROLL_C_0:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = hB;
+        rb = hD;
+        rc = h7; //led_c
+        machine_state.d = machine_state.CHECK_STOP_C;
+            
+/////////////////////////////////////////////////// MODE 1 /////////////////////////////////////////////////////////           
+     
+     machine_state.DISPLAY_TIMER_2:
+        alufn = 6b011010;
+        asel = b00; 
+        bsel = b00; 
+        wdsel = b00;
+        
+        we = 1;
+        ra = h11; //timer_counter_dff
+        rb = h0; 
+        rc = h15; //timer_display
+        if (io_button_0){
+          machine_state.d = machine_state.DISPLAY_STOPPED_B;}
+        else{
+          machine_state.d = machine_state.CHECK_TIMER_2;}
+        
+      machine_state.CHECK_TIMER_2:
+        alufn = 6b110011; //cmpeq
+        asel = b11; //0
+        bsel = b00; 
+        wdsel = b00;
+        
+        we = 0;
+        ra = h0; 
+        rb = h15; //timer_display 
+        rc = h0; 
+        if (alu_out == 16b1){
+          machine_state.d = machine_state.END;}
+        else{
+          machine_state.d = machine_state.SECOND_ROLL_B_1;}
+          
+     machine_state.SECOND_ROLL_B_1:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = hA; //reference
+        rb = hD; //counter
+        rc = h4; //led_b
+        if (io_button_0){
+          machine_state.d = machine_state.DISPLAY_STOPPED_B;}
+        else{
+          machine_state.d = machine_state.SECOND_ROLL_C_1;}
+        
+        
+      machine_state.SECOND_ROLL_C_1:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = hB; //reference
+        rb = hD; //counter
+        rc = h7; //led_c
+        if (io_button_0){
+          machine_state.d = machine_state.DISPLAY_STOPPED_B;}
+        else{
+          machine_state.d = machine_state.DISPLAY_TIMER_2;}
+            
+      machine_state.DISPLAY_TIMER_3:
+        alufn = 6b011010;
+        asel = b00; 
+        bsel = b00; 
+        wdsel = b00;
+        
+        we = 1;
+        ra = h11; //timer_counter_dff
+        rb = h0; 
+        rc = h15; //timer_display
+        if (io_button_0){
+          machine_state.d = machine_state.DISPLAY_STOPPED_C;}
+        else{
+          machine_state.d = machine_state.CHECK_TIMER_3;}
+        
+      machine_state.CHECK_TIMER_3:
+        alufn = 6b110011; //cmpeq
+        asel = b11; //0
+        bsel = b00; 
+        wdsel = b00;
+        
+        we = 0;
+        ra = h0; 
+        rb = h15; //timer_display 
+        rc = h0; 
+        if (alu_out == 16b1){
+          machine_state.d = machine_state.END;}
+        else{
+          machine_state.d = machine_state.LAST_ROLL_C_1;}
+          
+      machine_state.LAST_ROLL_C_1:
+        alufn = 6b0;
+        asel = b00;
+        bsel = b00;
+        wdsel = b00;
+        we = 1;
+        ra = hB;
+        rb = hD;
+        rc = h7; //led_c
+        if (io_button_0){
+          machine_state.d = machine_state.DISPLAY_STOPPED_C;}
+        else{
+          machine_state.d = machine_state.DISPLAY_TIMER_3;}
+          
+           
+     machine_state.DISPLAY_STOPPED_A:
+        alufn = b011010; //"A" 
+        asel = b00; 
+        bsel = b00; 
+        wdsel = b00;
+        we = 1;
+        ra = h12; //final_A
+        rb = h0; 
+        rc = h0; //write to led_A
+        machine_state.d = machine_state.STOP;
+        
+      machine_state.DISPLAY_STOPPED_B:
+        alufn = b011010; //"A"
+        asel = b00; 
+        bsel = b00; 
+        wdsel = b00;
+        we = 1;
+        ra = h13; //final_b
+        rb = h0; 
+        rc = h4;  //write to led_b to display
+        if (mode == 1){ //loop back to process
+          machine_state.d = machine_state.LAST_ROLL_C_1;}
+        else{
+          machine_state.d = machine_state.CHECK_STOP_C;}
+        
+        
+      machine_state.DISPLAY_STOPPED_C:
+        alufn = b011010; //"A"
+        asel = b00; 
+        bsel = b00; 
+        wdsel = b00;
+        we = 1;
+        ra = h14; //final_c
+        rb = h0; 
+        rc = h7;  //write to led_c to display
+        machine_state.d = machine_state.DISPLAY_SCORE_1; //loop back to process
+        
+      machine_state.DISPLAY_SCORE_1:
+        alufn = b011010; //"A"
+        asel = b00; 
+        bsel = b00; 
+        wdsel = b00;
+        we = 1;
+        ra = h16; //score_1_store
+        rb = h0; 
+        rc = h18;  //score_1_display
+        machine_state.d = machine_state.DISPLAY_SCORE_2; 
+        
+      machine_state.DISPLAY_SCORE_2:
+        alufn = b011010; //"A"
+        asel = b00; 
+        bsel = b00; 
+        wdsel = b00;
+        we = 1;
+        ra = h17; //score_2_store
+        rb = h0; 
+        rc = h19;  //score_2_display
+        machine_state.d = machine_state.END; //loop back to process
+        
+        
+      machine_state.END:
+        if (io_button_0){
+          machine_state.d = machine_state.RESET_TIMER;}
+        else{
+          machine_state.d = machine_state.END;}     
+      
+        
+      machine_state.RESET_TIMER:
+        alufn = 6b011010; //"A"
+        asel = b11; //0 
+        bsel = b00; 
+        wdsel = b00;
+        
+        we = 1;
+        ra = h0; 
+        rb = h0; 
+        rc = h15; //timer_display
+        machine_state.d = machine_state.RESET_SCORE_1;
+        
+      machine_state.RESET_SCORE_1:
+        alufn = b011010; //"A"
+        asel = b11; //0
+        bsel = b00; 
+        wdsel = b00;
+        we = 1;
+        ra = h0; 
+        rb = h0; 
+        rc = h18;  //score_1_display
+        machine_state.d = machine_state.RESET_SCORE_2; 
+        
+      machine_state.RESET_SCORE_2:
+        alufn = b011010; //"A"
+        asel = b11; //0 
+        bsel = b00; 
+        wdsel = b00;
+        we = 1;
+        ra = h0; 
+        rb = h0; 
+        rc = h18;  //score_1_display
+        machine_state.d = machine_state.START_A; //go back to start to reset symbols
+      
+}

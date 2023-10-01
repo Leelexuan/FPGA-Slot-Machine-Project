@@ -1,0 +1,11 @@
+module modulus (
+    input a[16],  // clock
+    input b[16],  // reset
+    output out[16]
+  ) {
+  
+  
+  always {
+    out = a-((a/b)*b);
+  }
+}

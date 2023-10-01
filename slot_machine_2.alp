@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="slot_machine_2" board="Alchitry Au" language="Lucid" version="3">
+  <files>
+    <component>cclk_detector.luc</component>
+    <src>registers.luc</src>
+    <component>pipeline.luc</component>
+    <component>counter.luc</component>
+    <src>floor_division.luc</src>
+    <src>rom.luc</src>
+    <src>output_hex_converter.luc</src>
+    <src>comparator.luc</src>
+    <src>score_calculation.luc</src>
+    <src>multiplier.luc</src>
+    <src>multi_seven_seg.luc</src>
+    <src>control_unit.luc</src>
+    <src>alu.luc</src>
+    <src>led_looper_a.luc</src>
+    <component>reset_conditioner.luc</component>
+    <src>adder.luc</src>
+    <component>button_conditioner.luc</component>
+    <src>seven_segment.luc</src>
+    <src>shifter.luc</src>
+    <src>boolean.luc</src>
+    <component>decoder.luc</component>
+    <src>datapath.luc</src>
+    <src>matrix_led_driver.luc</src>
+    <component>pn_gen.luc</component>
+    <component>bin_to_dec.luc</component>
+    <src>random_number_start.luc</src>
+    <src top="true">au_top.luc</src>
+    <src>modulus.luc</src>
+    <component>edge_detector.luc</component>
+    <src>final_outputs.luc</src>
+    <constraint>custom.acf</constraint>
+    <constraint>filename.xdc</constraint>
+  </files>
+</project>
